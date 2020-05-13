@@ -1,0 +1,50 @@
+{
+  "name": "capacitor-facebook-ads",
+  "version": "0.0.1",
+  "description": "Implement facebook ads as well as audience network",
+  "main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Todd Vrba",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "latest"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.0",
+    "typescript": "^3.2.4",
+    "@capacitor/ios": "latest",
+    "@capacitor/android": "latest"
+  },
+  "files": [
+    "dist/",
+    "ios/",
+    "android/",
+    "CapacitorFacebookAds.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SpellChucker/capacitor-facebook-ads"
+  },
+  "bugs": {
+    "url": "https://github.com/SpellChucker/capacitor-facebook-ads/issues"
+  }
+}
