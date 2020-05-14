@@ -20,7 +20,9 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate {
     var adOptionsView: FBAdOptionsView!
     
     @objc func initialize(_ call: CAPPluginCall) {
-        FBAudienceNetworkAds.initialize()
+        DispatchQueue.main.async {
+            FBAudienceNetworkAds.initialize()
+        }
     }
     
     @objc func initializeNativeAd(_ call: CAPPluginCall) {
@@ -35,11 +37,11 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate {
     
     @objc func showNativeAd(_ call: CAPPluginCall) {
         DispatchQueue.main.async {
+            NSLog("Facebook Ads: showing native ad")
             if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
                 if (self.nativeAd != nil && self.nativeAd.isAdValid) {
                     self.nativeAd.unregisterView()
                     
-                    self.adUIView = UIView()
                     self.adCoverMediaView = FBMediaView()
                     self.iconView = FBMediaView()
                     
