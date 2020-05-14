@@ -2,10 +2,19 @@ PODS:
   - Capacitor (2.1.0):
     - CapacitorCordova (= 2.1.0)
   - CapacitorCordova (2.1.0)
+  - FBAudienceNetwork (5.9.0):
+    - FBSDKCoreKit/Basics (>= 5.6.0)
+  - FBSDKCoreKit/Basics (6.2.0)
 
 DEPENDENCIES:
   - "Capacitor (from `../node_modules/@capacitor/ios`)"
   - "CapacitorCordova (from `../node_modules/@capacitor/ios`)"
+  - FBAudienceNetwork
+
+SPEC REPOS:
+  trunk:
+    - FBAudienceNetwork
+    - FBSDKCoreKit
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -16,7 +25,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Capacitor: 2566c6028c2f9f222631354ff160bdcbb29a37ca
   CapacitorCordova: ec9566f41e4c5de373f372a5908e586f98581dd9
+  FBAudienceNetwork: 648648b13d8ea3d39676542dece2b04dbe867497
+  FBSDKCoreKit: a7bb9f5ac56c1e11d5f8ae0b90a3610f8744b43a
 
-PODFILE CHECKSUM: 18edf3816e869cc37578950affc00fdd78ee0dcb
+PODFILE CHECKSUM: 9a46809665d6780b85b6f9fe69d6a756747391c8
 
 COCOAPODS: 1.8.4

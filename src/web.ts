@@ -13,6 +13,11 @@ export class FacebookAdsWeb extends WebPlugin implements FacebookAdsPlugin {
     console.log('ECHO', options);
     return options;
   }
+
+  async createBanner(options: any): Promise<boolean> {
+    console.log('createBanner', options);
+    return options;
+  }
 }
 
 const FacebookAds = new FacebookAdsWeb();
