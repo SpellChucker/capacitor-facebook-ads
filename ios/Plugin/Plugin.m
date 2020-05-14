@@ -6,5 +6,7 @@
 CAP_PLUGIN(FacebookAds, "FacebookAds",
            CAP_PLUGIN_METHOD(initialize, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(initializeNativeAd, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(initializeBannerAd, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(showNativeAd, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(showBannerAd, CAPPluginReturnPromise);
 )
