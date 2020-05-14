@@ -35,6 +35,10 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate, FBAdViewDelegate {
                 self.adView = FBAdView.init(placementID: placementId, adSize: kFBAdSizeHeight250Rectangle, rootViewController: rootViewController)
                 self.adView.delegate = self;
                 self.adView.loadAd()
+                
+                call.success([ "value": true ])
+            } else {
+                call.error("no rootview")
             }
         }
     }
@@ -46,6 +50,8 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate, FBAdViewDelegate {
             self.nativeAd = FBNativeAd.init(placementID: placementId)
             self.nativeAd.delegate = self
             self.nativeAd.loadAd()
+            
+            call.success([ "value": true ])
         }
     }
     
@@ -71,6 +77,10 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate, FBAdViewDelegate {
                                             constant: 0)
                         ])
                 }
+                
+                call.success([ "value": true ])
+            } else {
+                call.error("no root view")
             }
         }
     }
