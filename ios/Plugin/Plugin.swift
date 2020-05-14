@@ -24,11 +24,13 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate {
     }
     
     @objc func initializeNativeAd(_ call: CAPPluginCall) {
-        let placementId = call.getString("placementId") ?? ""
-        
-        self.nativeAd = FBNativeAd.init(placementID: placementId)
-        nativeAd.delegate = self
-        nativeAd.loadAd()
+        DispatchQueue.main.async {
+            let placementId = call.getString("placementId") ?? ""
+            
+            self.nativeAd = FBNativeAd.init(placementID: placementId)
+            self.nativeAd.delegate = self
+            self.nativeAd.loadAd()
+        }
     }
     
     @objc func showNativeAd(_ call: CAPPluginCall) {
