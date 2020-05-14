@@ -6,7 +6,8 @@ declare module "@capacitor/core" {
 
 export interface FacebookAdsPlugin {
   initialize(): Promise<any>;
-  createBanner(options: any): Promise<boolean>;
+  initializeBannerAd(options: any): Promise<any>;
   initializeNativeAd(options: any): Promise<any>;
+  showBannerAd(): Promise<any>;
   showNativeAd(): Promise<any>;
 }

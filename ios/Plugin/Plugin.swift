@@ -7,8 +7,10 @@ import FBAudienceNetwork
  * here: https://capacitor.ionicframework.com/docs/plugins/ios
  */
 @objc(FacebookAds)
-public class FacebookAds: CAPPlugin, FBNativeAdDelegate {
+public class FacebookAds: CAPPlugin, FBNativeAdDelegate, FBAdViewDelegate {
     var nativeAd: FBNativeAd!
+    var adView: FBAdView!
+    var adContainer: UIView!
     var adUIView: UIView!
     var adCoverMediaView: FBMediaView!
     var iconView: FBMediaView!
@@ -25,6 +27,18 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate {
         }
     }
     
+    @objc func initializeBannerAd(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+                let placementId = call.getString("placementId") ?? ""
+                
+                self.adView = FBAdView.init(placementID: placementId, adSize: kFBAdSizeHeight250Rectangle, rootViewController: rootViewController)
+                self.adView.delegate = self;
+                self.adView.loadAd()
+            }
+        }
+    }
+    
     @objc func initializeNativeAd(_ call: CAPPluginCall) {
         DispatchQueue.main.async {
             let placementId = call.getString("placementId") ?? ""
@@ -32,6 +46,32 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate {
             self.nativeAd = FBNativeAd.init(placementID: placementId)
             self.nativeAd.delegate = self
             self.nativeAd.loadAd()
+        }
+    }
+    
+    @objc func showBannerAd(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
+                if (self.adView != nil && self.adView.isAdValid) {
+                    rootViewController.view.addSubview(self.adView)
+                    rootViewController.view.addConstraints(
+                        [NSLayoutConstraint(item: self.adView,
+                                            attribute: .bottom,
+                                            relatedBy: .equal,
+                                            toItem: rootViewController.view.safeAreaInsets.top,
+                                            attribute: .top,
+                                            multiplier: 1,
+                                            constant: CGFloat(0)),
+                         NSLayoutConstraint(item: self.adView,
+                                            attribute: .centerX,
+                                            relatedBy: .equal,
+                                            toItem: rootViewController.view,
+                                            attribute: .centerX,
+                                            multiplier: 1,
+                                            constant: 0)
+                        ])
+                }
+            }
         }
     }
     
