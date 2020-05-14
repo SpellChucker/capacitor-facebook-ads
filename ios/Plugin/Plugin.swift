@@ -42,8 +42,15 @@ public class FacebookAds: CAPPlugin, FBNativeAdDelegate {
                 if (self.nativeAd != nil && self.nativeAd.isAdValid) {
                     self.nativeAd.unregisterView()
                     
+                    self.adUIView = UIView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
                     self.adCoverMediaView = FBMediaView()
                     self.iconView = FBMediaView()
+                    self.adCallToActionButton = UIButton()
+                    self.adTitleLabel = UILabel()
+                    self.adBodyLabel = UILabel()
+                    self.adSocialContextLabel = UILabel()
+                    self.sponsoredLabel = UILabel()
+                    self.adOptionsView = FBAdOptionsView()
                     
                     rootViewController.view.addSubview(self.adUIView)
                     

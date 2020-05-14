@@ -5,7 +5,7 @@ declare module "@capacitor/core" {
 }
 
 export interface FacebookAdsPlugin {
-  echo(options: { value: string }): Promise<{value: string}>;
+  initialize(): Promise<any>;
   createBanner(options: any): Promise<boolean>;
   initializeNativeAd(options: any): Promise<any>;
   showNativeAd(): Promise<any>;
